@@ -37,3 +37,104 @@ altay-muhendislik-dergisi/
 ├── frontend/         # React Uygulaması, Bileşenler (Components) ve E-Dergi Modülü
 ├── n8n/              # Yapay Zeka Yorum Analizi Workflow Şemaları (JSON)
 └── README.md         # Proje Tanım Dokümanı
+
+
+erDiagram
+    users {
+        int id PK
+        string name
+        string email UNIQUE
+        string password_hash
+        user_role role
+        boolean is_premium
+        text biography
+        string avatar_url
+    }
+
+    dergi_sayilari {
+        int id PK
+        int sayi_no UNIQUE
+        string baslik
+        string pdf_url
+        string kapak_gorsel_url
+        text kareografi_metni
+        date yayin_tarihi
+    }
+
+    makaleler {
+        int id PK
+        int yazar_id FK
+        string baslik
+        text icerik
+        string kapak_gorsel_url
+        string durum
+    }
+
+    yorumlar {
+        int id PK
+        int makale_id FK
+        int kullanici_id FK
+        int ust_yorum_id FK
+        text icerik
+        string durum
+    }
+
+    indirme_izinleri {
+        int id PK
+        int kullanici_id FK
+        int dergi_id FK
+        boolean is_permitted
+    }
+
+    fiziki_dergi_talepleri {
+        int id PK
+        string konum_adi
+        string yetkili_adi
+        string email
+        string telefon
+        text adres
+        int talep_edilen_adet
+        string durum
+    }
+
+    slider_yonetimi {
+        int id PK
+        string gorsel_url
+        string ana_slogan
+        string alt_yazi
+        string buton_yazisi
+        string buton_url
+        int sira_no
+        boolean is_active
+    }
+
+    dinamik_sayfalar {
+        int id PK
+        string slug UNIQUE
+        string baslik
+        text icerik
+    }
+
+    podcastler {
+        int id PK
+        string baslik
+        text aciklama
+        string ses_dosyasi_url
+        date yayin_tarihi
+    }
+
+    eposta_bulteni {
+        int id PK
+        string email UNIQUE
+        boolean is_active
+    }
+
+    %% İLİŞKİLER VE BAĞLANTILAR (FOREIGN KEYS)
+    users ||--o{ makaleler : "yazar_id (Yazarın yazıları)"
+    users ||--o{ yorumlar : "kullanici_id (Okurun yorumları)"
+    users ||--o{ indirme_izinleri : "kullanici_id (Kullanıcı izni)"
+    
+    makaleler ||--o{ yorumlar : "makale_id (Yazıya gelen yorumlar)"
+    dergi_sayilari ||--o{ indirme_izinleri : "dergi_id (Dergiye ait izinler)"
+    
+    yorumlar ||--o{ yorumlar : "ust_yorum_id (Yazarın yoruma cevabı)"
