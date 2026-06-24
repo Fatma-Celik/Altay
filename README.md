@@ -1,3 +1,4 @@
+<img width="935" height="613" alt="Ekran görüntüsü 2026-06-24 165145" src="https://github.com/user-attachments/assets/3646fbde-2cc7-42ba-9839-88cc295cd28c" />
 # 🦅 Altay Mühendislik Dergisi Platformu
 
 ![Status](https://img.shields.io/badge/Status-Geliştirme_Aşamasında-orange?style=for-the-badge)
@@ -28,6 +29,7 @@ Bu repo, platformun **Frontend (React)** ve **Backend (Node.js)** kaynak kodlar�
 * **Sunucu / Dağıtım (Deployment):** Güzel Hosting (Linux Server - Node.js & PostgreSQL enabled) ile SSL/HTTPS koruması.
 
 ---
+<img width="935" height="613" alt="Ekran görüntüsü 2026-06-24 165145" src="https://github.com/user-attachments/assets/6c60a860-9196-48e8-b577-3a1601104ba8" />
 
 ## 📂 Proje Klasör Yapısı
 
